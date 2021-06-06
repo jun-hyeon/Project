@@ -1,0 +1,96 @@
+
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.*;
+
+import javax.swing.*;
+import javax.swing.table.AbstractTableModel;
+import javax.swing.table.TableModel;
+
+import net.proteanit.sql.DbUtils;
+
+class SchoolInfor extends JFrame {
+	Connection con;
+	JComboBox combo1;
+	JComboBox combo2;
+	JComboBox combo3;
+	JButton ok;
+	JTable table;
+	TableModel tm;
+	
+	SchoolInfor() {
+		setSize(800,500);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setTitle("2018년도 전문대학교 수시 모집");			
+		
+		JPanel total = new JPanel();
+		JPanel msg = new JPanel();
+		JPanel combo = new JPanel();
+		JPanel content = new JPanel();
+		JButton ok = new JButton("확인");
+		JLabel infor = new JLabel("원하시는 정보를 선택하세요.");
+		String[] schoolname = {"대학교","유한대학교","부천대학교","명지전문대학교","인하공업전문대학교","동양미래대학교"};
+		String[] lastyear = {"수시 1,2","수시 1차","수시 2차"};
+		String[] score = {"등급","1.0 ~ 3.0","3.0 ~ 6.0","6.0 ~ 10.0"};
+			
+		JComboBox combo1 = new JComboBox(schoolname);
+		JComboBox combo2 = new JComboBox(lastyear);
+		JComboBox combo3 = new JComboBox(score);		
+		
+		combo1.setPreferredSize(new Dimension(250,30));
+		combo2.setPreferredSize(new Dimension(200,30));
+		combo3.setPreferredSize(new Dimension(200,30));
+		content.setPreferredSize(new Dimension(750,350));
+		
+		table = new JTable();
+		JScrollPane scrollPane = new JScrollPane(table);
+		scrollPane.setPreferredSize(new Dimension(750,350));
+		content.add(scrollPane);
+		scrollPane.setViewportView(table);
+		
+		ok.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
+		
+		
+				
+		msg.setBackground(Color.GREEN);
+		combo.setBackground(Color.yellow);
+		content.setBackground(Color.pink);
+		
+		msg.add(infor);
+		combo.add(combo1);
+		combo.add(combo2);
+		combo.add(combo3);
+		combo.add(ok);
+				
+		total.add(msg);
+		total.add(combo);
+		total.add(content);
+		
+		add(total);
+	
+					
+		setVisible(true);
+	}
+	
+	
+	
+
+
+	
+	}
+
+
+public class School {
+	
+	public static void main(String[] args) throws SQLException {
+		// TODO Auto-generated method stub
+		new SchoolInfor();
+	}
+}

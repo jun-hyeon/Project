@@ -1,0 +1,25 @@
+import java.sql.*;
+import javax.swing.*;
+
+import net.proteanit.sql.DbUtils;
+
+public class DataBase {
+
+	Connection sqliteConnection = null;
+	
+	public static Connection dataConnction()
+	{
+		try {
+			Class.forName("org.sqlite.JDBC");
+			Connection dbConnection = DriverManager.getConnection("E:\\school.db");
+			JOptionPane.showMessageDialog(null,"Connected");
+			return dbConnection;
+	
+			}catch(Exception e) {
+				JOptionPane.showMessageDialog(null,e);
+			}
+		return null;	
+	}
+	
+	
+}
